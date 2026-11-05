@@ -1,0 +1,6 @@
+document.getElementById('year').textContent=new Date().getFullYear();
+document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-filter]').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button))});document.querySelectorAll('.project').forEach(card=>card.hidden=button.dataset.filter!=='all'&&card.dataset.type!==button.dataset.filter)}));
+document.querySelectorAll('[data-project]').forEach(button=>button.addEventListener('click',()=>document.getElementById('project-dialog').showModal()));
+document.getElementById('credits').addEventListener('click',()=>document.getElementById('credits-dialog').showModal());
+document.querySelectorAll('dialog').forEach(dialog=>{dialog.querySelector('.close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close()}})});
+document.getElementById('copy-email').addEventListener('click',async function(){try{await navigator.clipboard.writeText('vinmiranda0730@gmail.com');this.textContent='Email copied';setTimeout(()=>this.textContent='Copy email',2500)}catch{this.textContent='vinmiranda0730@gmail.com'}});
